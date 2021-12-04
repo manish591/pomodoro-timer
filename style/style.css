@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@font-face {
+    font-family: myFirstFont;
+    src: url('/STARTER/fonts/bebasneue-book-webfont.woff');
+  }
 
 * {
     margin: 0;
@@ -15,38 +19,50 @@
 
 body {
     background-color: #2B2A30;
-}
-
-.pomodoro-container {
+    color: white;
     height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.timer-container {
-    width: 320px;
-    height: 320px;
-    background-color: #2B2A30;
-    box-shadow: 2px 2px 5px black;
+.pomodoro-container {
+    height: 520px;
+    width: 520px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     border-radius: 50%;
+}
+
+.ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    stroke: var(--green-clr);
+    z-index: 1;
+}
+
+.timer-container {
+    width: 500px;
+    height: 500px;
+    background-color: #2B2A30;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 50%;
+    background-color: rgba(66, 65, 65, 0.596);
+    z-index: 2;
 }
 
 .time {
-    font-size: 8rem;
-    font-family: 'Bebas Neue', cursive;
+    font-size: 14rem;
+    font-family: myFirstFont;
     margin-top: 8vh;
-}
-
-.start-timer {
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 2vh;
-    letter-spacing: 3px;
-    font-size: .8rem;
+    z-index: 1;
 }
 
 .mini-container {
@@ -55,16 +71,44 @@ body {
     justify-content: center;
     align-items: center;
     margin-top: 2vh;
+    z-index: 1;
+}
+
+.start-timer {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 3vh;
+    letter-spacing: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: .8;
+    cursor: pointer;
+    transition: opacity .5s ease-out;
+}
+
+.start-timer:hover {
+    opacity: 1;
 }
 
 .settings {
     width: 50%;
+    opacity: .6;
+    cursor: pointer;
+    transition: opacity .5s ease-out;
 }
 
-@media only screen and (min-width: 450px) {
+.settings:hover {
+    opacity: 1;
+}
+
+/* @media only screen and (min-width: 450px) {
     .timer-container {
-        width: 400px;
-        height: 400px;
+        width: 520px;
+        height: 520px;
+    }
+
+    svg {
+        width: 520px;
+        height: 520px;
     }
 }
 
@@ -77,4 +121,9 @@ body {
     .time {
         font-size: 6rem;
     }
-}
+
+    svg {
+        width: 220px;
+        height: 220px;
+    }
+} */
