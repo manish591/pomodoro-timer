@@ -4,6 +4,14 @@ const startTimerButton = document.querySelector('.start-timer');
 const settings = document.querySelector('.settings');
 const clockCircle = document.querySelector('.circle');
 
+let circumference = 1602;
+clockCircle.style.strokeDasharray = `${circumference}`;
+
+
+function updateClockRing(percent) {
+    let value = circumference - (circumference * (percent / 100));
+    clockCircle.style.strokeDashoffset = `${value}`;
+}
 
 startTimerButton.addEventListener('click', startPomodoroTimer);
 settings.addEventListener('click', updatePomodoroSettings);
@@ -14,6 +22,7 @@ function startPomodoroTimer(e) {
     let mins = Number(minutes.firstElementChild.value);
     let sec = Number(seconds.firstElementChild.value);
     let totalTime = (mins * 60) + sec;
+    let fixedTime = (mins * 60) + sec;
 
     function timer() {
         let m = Math.floor(totalTime / 60);
@@ -21,6 +30,9 @@ function startPomodoroTimer(e) {
         minutes.firstElementChild.value = m;
         seconds.firstElementChild.value = s;
         totalTime--;
+        let newTime = totalTime;
+        let percent = (newTime / fixedTime) * 100;
+        updateClockRing(percent);
     }
 
     if(e.target.innerText === 'STOP') {
