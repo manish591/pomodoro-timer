@@ -63,6 +63,27 @@ body {
     font-family: myFirstFont;
     margin-top: 8vh;
     z-index: 1;
+    display: flex;
+}
+
+input {
+    background: none;
+    border: none;
+    text-align: center;
+    color: white;
+}
+
+input[type="text"] {
+    font-size: 12rem;
+    height: 170px;
+    width: 170px;
+    font-family: myFirstFont;
+    outline: none;
+    border-bottom: 1px dashed white;
+}
+
+input[type="text"]:disabled {
+    border: none;
 }
 
 .mini-container {
